@@ -25,5 +25,26 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+private:
+	APlayerController* PlayerControllerPtr;
+	
+	// Stats
+	UPROPERTY(EditInstanceOnly,BlueprintReadWrite, Category="Stats", meta = (AllowPrivateAccess="true"))
+	float Speed = 200.f;
+
+	UPROPERTY(EditInstanceOnly,BlueprintReadWrite, Category="Stats", meta = (AllowPrivateAccess="true"))
+	float TurnRate = 20.f;
+
+	// Movement
+	void MoveForward(float Value);
+	void MoveRight(float Value); 
+	void Turn(float Value);
+
+	// Actions
+	void Shoot();
+
+	
 
 };
+
+
