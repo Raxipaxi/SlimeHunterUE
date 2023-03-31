@@ -25,7 +25,22 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
 private:
+	// MESH // 
+	UPROPERTY(EditInstanceOnly,BlueprintReadOnly, Category="Body Mesh", meta = (AllowPrivateAccess="true"))
+	class UCapsuleComponent* CapsuleComp;
+
+	UPROPERTY(EditInstanceOnly,BlueprintReadOnly, Category="Body Mesh", meta = (AllowPrivateAccess="true"))
+	UStaticMeshComponent* BaseMesh;
+
+	UPROPERTY(EditInstanceOnly,BlueprintReadOnly, Category="Body Mesh", meta = (AllowPrivateAccess="true"))
+	UStaticMeshComponent* WeaponMesh;
+
+	UPROPERTY(EditInstanceOnly,BlueprintReadOnly, Category="Body Mesh", meta = (AllowPrivateAccess="true"))
+	USceneComponent* SpawnPoint;
+
+//***************************************************************************
 	APlayerController* PlayerControllerPtr;
 	
 	// Stats
@@ -38,11 +53,10 @@ private:
 	// Movement
 	void MoveForward(float Value);
 	void MoveRight(float Value); 
-	void Turn(float Value);
+	void Turn(FVector Value);
 
 	// Actions
 	void Shoot();
-
 	
 
 };

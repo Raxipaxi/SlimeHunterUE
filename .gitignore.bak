@@ -57,11 +57,6 @@ Build/*
 Build/*/**
 !Build/*/PakBlacklist*.txt
 
-# They're tracked by git-lfs, don't forget to track other
-# files if adding them here.
-/Content/**/*.uasset
-/Content/**/*.umap
-
 # Don't ignore icon files in Build
 !Build/**/*.ico
 

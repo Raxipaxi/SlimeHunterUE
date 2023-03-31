@@ -3,6 +3,7 @@
 
 #include "Hunter.h"
 
+#include "Components/CapsuleComponent.h"
 #include "Kismet/GameplayStatics.h"
 
 // Sets default values
@@ -10,6 +11,17 @@ AHunter::AHunter()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	CapsuleComp = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Capsule Collider"));
+	RootComponent = CapsuleComp;
+
+	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Base Mesh"));
+	BaseMesh->SetupAttachment(CapsuleComp);
+
+	WeaponMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Turret Mesh"));
+	WeaponMesh->SetupAttachment(BaseMesh);
+	
+	SpawnPoint  = CreateDefaultSubobject<USceneComponent>(TEXT("Projectile Spawn Point"));
+	SpawnPoint->SetupAttachment(WeaponMesh);
 
 }
 
@@ -17,6 +29,7 @@ AHunter::AHunter()
 void AHunter::BeginPlay()
 {
 	Super::BeginPlay();
+	PlayerControllerPtr = Cast<APlayerController>(GetController());
 	
 }
 
@@ -24,6 +37,12 @@ void AHunter::BeginPlay()
 void AHunter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	if (PlayerControllerPtr)
+	{
+		FHitResult HitResult;
+		PlayerControllerPtr->GetHitResultUnderCursor(ECC_Visibility, false, HitResult);
+		Turn(HitResult.ImpactPoint);
+	}
 
 }
 
@@ -33,7 +52,6 @@ void AHunter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	PlayerInputComponent->BindAxis(TEXT("MoveForward"),this,&AHunter::MoveForward);
 	PlayerInputComponent->BindAxis(TEXT("MoveRight"),this,&AHunter::MoveRight);
-	PlayerInputComponent->BindAxis(TEXT("Turn"),this,&AHunter::Turn);
 	PlayerInputComponent->BindAction(TEXT("Fire"),IE_Pressed,this,&AHunter::Shoot);
 
 }
@@ -48,16 +66,21 @@ void AHunter::MoveForward(float Value)
 void AHunter::MoveRight(float Value)
 {
 	FVector DeltaLocation = FVector::ZeroVector;
-	DeltaLocation.Z = Value * Speed * UGameplayStatics::GetWorldDeltaSeconds(this);
+	DeltaLocation.Y = Value * Speed * UGameplayStatics::GetWorldDeltaSeconds(this);
 	
 	AddActorLocalOffset(DeltaLocation,true);
 }
 
-void AHunter::Turn(float Value)
+void AHunter::Turn(FVector LookAtTarget)
 {
+	FVector ToTarget = LookAtTarget - BaseMesh->GetComponentLocation();
+	FRotator LookAtRotation = FRotator(0.f,ToTarget.Rotation().Yaw,0.f);
+
+	BaseMesh->SetWorldRotation(FMath::RInterpTo(BaseMesh->GetComponentRotation(),LookAtRotation,UGameplayStatics::GetWorldDeltaSeconds(this),25.f));
 }
 
 void AHunter::Shoot()
 {
+	
 }
 

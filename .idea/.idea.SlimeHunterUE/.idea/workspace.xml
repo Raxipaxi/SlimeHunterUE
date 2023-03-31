@@ -7,8 +7,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bf8e5474-c432-411a-ba55-65a9abde9424" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SlimeHunterUE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SlimeHunterUE/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SlimeHunterUE.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/SlimeHunterUE.uproject" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/SlimeHunterUE/Player/Hunter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/SlimeHunterUE/Player/Hunter.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/SlimeHunterUE/Player/Hunter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/SlimeHunterUE/Player/Hunter.h" afterDir="false" />
     </list>
@@ -265,6 +265,7 @@
       <workItem from="1680180835288" duration="756000" />
       <workItem from="1680266675143" duration="1954000" />
       <workItem from="1680271177890" duration="3818000" />
+      <workItem from="1680276752976" duration="3561000" />
     </task>
     <servers />
   </component>
