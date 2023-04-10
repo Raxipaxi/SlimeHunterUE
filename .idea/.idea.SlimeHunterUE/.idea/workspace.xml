@@ -6,7 +6,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf8e5474-c432-411a-ba55-65a9abde9424" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Source/SlimeHunterUE/Weapon/Gun/Gun.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/SlimeHunterUE/Weapon/Gun/Gun.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/SlimeHunterUE/Weapon/Weapon.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/SlimeHunterUE/Weapon/Weapon.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SlimeHunterUE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SlimeHunterUE/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/StarterContent/Materials/M_Metal_Burnished_Steel.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/Materials/M_Metal_Burnished_Steel.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/SlimeHunterUE/Player/Hunter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/SlimeHunterUE/Player/Hunter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/SlimeHunterUE/Player/Hunter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/SlimeHunterUE/Player/Hunter.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +24,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2NjcFuPsUAZvTX2b7PbjZETkHu0" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -262,6 +272,9 @@
       <workItem from="1680266675143" duration="1954000" />
       <workItem from="1680271177890" duration="3818000" />
       <workItem from="1680276752976" duration="4695000" />
+      <workItem from="1680546601558" duration="3000" />
+      <workItem from="1680547055519" duration="668000" />
+      <workItem from="1680560542197" duration="3717000" />
     </task>
     <servers />
   </component>

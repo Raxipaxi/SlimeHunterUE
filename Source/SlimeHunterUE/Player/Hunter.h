@@ -6,6 +6,7 @@
 #include "GameFramework/Pawn.h"
 #include "Hunter.generated.h"
 
+class AGun;
 UCLASS()
 class SLIMEHUNTERUE_API AHunter : public APawn
 {
@@ -27,20 +28,6 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 private:
-	// MESH // 
-	UPROPERTY(EditInstanceOnly,BlueprintReadOnly, Category="Body Mesh", meta = (AllowPrivateAccess="true"))
-	class UCapsuleComponent* CapsuleComp;
-
-	UPROPERTY(EditInstanceOnly,BlueprintReadOnly, Category="Body Mesh", meta = (AllowPrivateAccess="true"))
-	UStaticMeshComponent* BaseMesh;
-
-	UPROPERTY(EditInstanceOnly,BlueprintReadOnly, Category="Body Mesh", meta = (AllowPrivateAccess="true"))
-	UStaticMeshComponent* WeaponMesh;
-
-	UPROPERTY(EditInstanceOnly,BlueprintReadOnly, Category="Body Mesh", meta = (AllowPrivateAccess="true"))
-	USceneComponent* SpawnPoint;
-
-//***************************************************************************
 	APlayerController* PlayerControllerPtr;
 	
 	// Stats
@@ -57,6 +44,11 @@ private:
 
 	// Actions
 	void Shoot();
+
+	//Weapon
+	UPROPERTY()
+	AGun* Gun;
+	
 	
 
 };

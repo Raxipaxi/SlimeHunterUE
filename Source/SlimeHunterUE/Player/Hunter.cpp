@@ -11,18 +11,6 @@ AHunter::AHunter()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	CapsuleComp = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Capsule Collider"));
-	RootComponent = CapsuleComp;
-
-	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Base Mesh"));
-	BaseMesh->SetupAttachment(CapsuleComp);
-
-	WeaponMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Turret Mesh"));
-	WeaponMesh->SetupAttachment(BaseMesh);
-	
-	SpawnPoint  = CreateDefaultSubobject<USceneComponent>(TEXT("Projectile Spawn Point"));
-	SpawnPoint->SetupAttachment(WeaponMesh);
-
 }
 
 // Called when the game starts or when spawned
@@ -58,10 +46,11 @@ void AHunter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 void AHunter::MoveForward(float Value)
 {
-	FVector DeltaLocation = FVector::ZeroVector;
-	DeltaLocation.X = Value * Speed * UGameplayStatics::GetWorldDeltaSeconds(this);
+	 FVector DeltaLocation = FVector::ZeroVector;
+	 DeltaLocation.X = Value * Speed * UGameplayStatics::GetWorldDeltaSeconds(this);
 	
-	AddActorLocalOffset(DeltaLocation,true);
+	 AddActorLocalOffset(DeltaLocation,true);
+	//AddMovementInput(GetActorForwardVector()*Value);
 }
 void AHunter::MoveRight(float Value)
 {
@@ -69,14 +58,16 @@ void AHunter::MoveRight(float Value)
 	DeltaLocation.Y = Value * Speed * UGameplayStatics::GetWorldDeltaSeconds(this);
 	
 	AddActorLocalOffset(DeltaLocation,true);
+//	AddMovementInput(GetActorRightVector()*Value);
 }
 
 void AHunter::Turn(FVector LookAtTarget)
 {
-	FVector ToTarget = LookAtTarget - BaseMesh->GetComponentLocation();
+	FVector ToTarget = LookAtTarget - GetActorLocation();
 	FRotator LookAtRotation = FRotator(0.f,ToTarget.Rotation().Yaw,0.f);
 
-	BaseMesh->SetWorldRotation(FMath::RInterpTo(BaseMesh->GetComponentRotation(),LookAtRotation,UGameplayStatics::GetWorldDeltaSeconds(this),25.f));
+//	BaseMesh->SetWorldRotation(FMath::RInterpTo(GetActorRotation(),LookAtRotation,UGameplayStatics::GetWorldDeltaSeconds(this),25.f));
+//	SetActorRotation(FMath::RInterpTo(GetActorRotation(),LookAtRotation,UGameplayStatics::GetWorldDeltaSeconds(this),25.f));
 }
 
 void AHunter::Shoot()
